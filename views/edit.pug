@@ -1,0 +1,17 @@
+extends layout.pug
+
+block content
+  h1 Edit Post
+  form(action=`/edit/${post.id}`, method="POST")
+    label(for="title") Title:
+    input(type="text", name="title", value=post.title, required)
+    br
+    label(for="content") Content:
+    textarea(name="content", required)= post.content
+    br
+    label(for="categoryId") Category:
+    select(name="categoryId")
+      each category in categories
+        option(value=category.id, selected=category.id == post.categoryId)= category.name
+    br
+    button(type="submit") Update Post

@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  h3 Add Comment
+  form(action="/comment", method="POST")
+    input(type="hidden", name="postId", value=post.id)
+    label(for="author") Your Name:
+    input(type="text", name="author", required)
+    br
+    label(for="content") Comment:
+    textarea(name="content", required)
+    br
+    button(type="submit") Submit Comment

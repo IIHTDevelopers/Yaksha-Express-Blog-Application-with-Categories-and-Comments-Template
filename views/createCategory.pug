@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+  h1 Create a New Category
+  form(action="/createCategory", method="POST")
+    label(for="name") Category Name:
+    input(type="text", name="name", required)
+    br
+    button(type="submit") Create Category

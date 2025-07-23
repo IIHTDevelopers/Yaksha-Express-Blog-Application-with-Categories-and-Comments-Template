@@ -1,0 +1,17 @@
+extends layout.pug
+
+block content
+  h1 Create a New Post
+  form(action="/create", method="POST")
+    label(for="title") Title:
+    input(type="text", name="title", required)
+    br
+    label(for="content") Content:
+    textarea(name="content", required)
+    br
+    label(for="categoryId") Category:
+    select(name="categoryId")
+      each category in categories
+        option(value=category.id)= category.name
+    br
+    button(type="submit") Submit

@@ -1,0 +1,22 @@
+extends layout.pug
+
+block content
+  h1= post.title
+  p= post.content
+  p Created at: #{post.createdAt}
+
+  h3 Comments
+  ul
+    each comment in comments
+      li
+        p <strong>#{comment.author}</strong>: #{comment.content}
+
+  form(action="/comment", method="POST")
+    input(type="hidden", name="postId", value=post.id)
+    label(for="author") Your Name:
+    input(type="text", name="author", required)
+    br
+    label(for="content") Comment:
+    textarea(name="content", required)
+    br
+    button(type="submit") Add Comment
